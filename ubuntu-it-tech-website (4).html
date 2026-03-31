@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ubuntu IT Tech – Your Complete IT Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0a1628;
+  --navy2: #0f2040;
+  --blue: #1565c0;
+  --sky: #2196f3;
+  --accent: #00b0ff;
+  --ice: #e3f2fd;
+  --white: #ffffff;
+  --silver: #90a4ae;
+  --text: #263238;
+  --muted: #546e7a;
+  --border: #dde8f4;
+  --bg: #f5f9ff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(10,22,40,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--sky), var(--accent));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+.nav-logo-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.nav-logo-text span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--sky), var(--accent));
+  color: var(--white) !important;
+  padding: 10px 22px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 14px rgba(33,150,243,0.35);
+}
+
+.nav-cta:hover { background: var(--accent) !important; transform: translateY(-1px); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ─── PAGES ─── */
+.page { display: none; padding-top: 70px; }
+.page.active { display: block; }
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--navy);
+  padding: 100px 5% 80px;
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 80px solid rgba(33,150,243,0.1);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; left: 30%;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  border: 60px solid rgba(0,176,255,0.06);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,176,255,0.12);
+  border: 1px solid rgba(0,176,255,0.3);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(44px, 6vw, 68px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.0;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero h1 em {
+  color: var(--accent);
+  font-style: normal;
+  display: block;
+}
+
+.hero p {
+  font-size: 16px;
+  color: var(--silver);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--sky), var(--accent));
+  color: var(--white);
+  padding: 15px 32px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 8px 24px rgba(33,150,243,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(33,150,243,0.5); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  padding: 15px 32px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: var(--accent); background: rgba(0,176,255,0.08); }
+
+/* Hero visual */
+.hero-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 22px;
+  backdrop-filter: blur(10px);
+  animation: floatCard 4s ease-in-out infinite;
+}
+.hero-card:nth-child(2) { animation-delay: 0.5s; margin-top: 20px; }
+.hero-card:nth-child(3) { animation-delay: 1s; }
+.hero-card:nth-child(4) { animation-delay: 1.5s; margin-top: 20px; }
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.hero-card-icon { font-size: 28px; margin-bottom: 10px; }
+.hero-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.hero-card-sub { font-size: 12px; color: var(--silver); }
+
+/* ─── STATS ─── */
+.stats {
+  background: linear-gradient(90deg, var(--blue), var(--sky));
+  padding: 36px 5%;
+}
+
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* ─── SECTION COMMONS ─── */
+section {
+  padding: 80px 5%;
+}
+
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--sky);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title em { color: var(--sky); font-style: normal; }
+
+.section-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.section-header { margin-bottom: 52px; }
+.section-header.center { text-align: center; }
+.section-header.center .section-sub { margin: 0 auto; }
+
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ─── HOME SERVICES PREVIEW ─── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: default;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--sky), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(21,101,192,0.12);
+  border-color: rgba(33,150,243,0.3);
+}
+
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+.service-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.service-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ─── WHY US ─── */
+.why-section { background: var(--bg); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.why-visual {
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-visual::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 40px solid rgba(33,150,243,0.12);
+}
+
+.why-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.why-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.why-dot {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--sky), var(--accent));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.why-item-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.why-item-sub { font-size: 13px; color: var(--silver); line-height: 1.5; }
+
+.why-points { display: flex; flex-direction: column; gap: 24px; }
+
+.why-point {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+}
+
+.why-point-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sky);
+  line-height: 1;
+  min-width: 36px;
+}
+
+.why-point-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.why-point-sub { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* ─── CTA BANNER ─── */
+.cta-banner {
+  background: linear-gradient(120deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%);
+  padding: 70px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  border: 60px solid rgba(255,255,255,0.05);
+}
+.cta-banner h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+.cta-banner h2 em { color: var(--accent); font-style: normal; }
+.cta-banner p {
+  color: rgba(255,255,255,0.75);
+  font-size: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.cta-banner .btn-primary {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+  padding: 16px 40px;
+}
+
+/* ─── ABOUT PAGE ─── */
+.about-hero {
+  background: var(--navy);
+  padding: 80px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.about-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(33,150,243,0.15) 0%, transparent 60%);
+}
+.about-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.about-hero h1 em { color: var(--accent); font-style: normal; }
+.about-hero p { color: var(--silver); font-size: 16px; margin-top: 14px; position: relative; z-index: 1; }
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-text strong { color: var(--navy); font-weight: 600; }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.value-card {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  text-align: center;
+}
+.value-icon { font-size: 32px; margin-bottom: 10px; }
+.value-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.value-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ─── SERVICES PAGE ─── */
+.services-page-hero {
+  background: var(--navy);
+  padding: 80px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.services-page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(0,176,255,0.12) 0%, transparent 60%);
+}
+.services-page-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.services-page-hero h1 em { color: var(--accent); font-style: normal; }
+.services-page-hero p { color: var(--silver); font-size: 16px; margin-top: 14px; position: relative; z-index: 1; }
+
+.services-full-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.service-full-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 36px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.service-full-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--sky), var(--accent));
+}
+.service-full-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(21,101,192,0.1);
+}
+.sfc-icon-wrap {
+  width: 56px; height: 56px;
+  background: var(--ice);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.sfc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.sfc-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.sfc-features {
+  list-style: none;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sfc-features li {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sfc-features li::before {
+  content: '✓';
+  color: var(--sky);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* ─── CONTACT PAGE ─── */
+.contact-hero {
+  background: var(--navy);
+  padding: 80px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(33,150,243,0.15) 0%, transparent 60%);
+}
+.contact-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.contact-hero h1 em { color: var(--accent); font-style: normal; }
+.contact-hero p { color: var(--silver); font-size: 16px; margin-top: 14px; position: relative; z-index: 1; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+
+.contact-card {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.cc-icon {
+  width: 46px; height: 46px;
+  background: linear-gradient(135deg, var(--sky), var(--accent));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.cc-label { font-size: 12px; color: var(--silver); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.cc-value { font-size: 15px; font-weight: 500; color: var(--navy); }
+
+/* FORM */
+.quote-form {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 44px;
+  box-shadow: 0 10px 40px rgba(21,101,192,0.07);
+}
+
+.form-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.form-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { font-size: 13px; font-weight: 500; color: var(--navy); display: block; margin-bottom: 6px; }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--sky);
+  background: var(--white);
+}
+
+.form-group textarea { resize: vertical; min-height: 110px; }
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--sky), var(--accent));
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(33,150,243,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 6px;
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(33,150,243,0.45); }
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 28px;
+}
+.form-success .check { font-size: 56px; margin-bottom: 16px; }
+.form-success h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.form-success p { font-size: 14px; color: var(--muted); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy);
+  color: var(--silver);
+  padding: 60px 5% 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.footer-brand-text span { color: var(--accent); }
+
+.footer-tagline { font-size: 13px; color: var(--silver); line-height: 1.6; max-width: 240px; }
+
+.footer-col h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  font-size: 13px;
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--accent); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .hero-grid, .why-grid, .about-content, .contact-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .services-full-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px; left: 0; right: 0;
+    background: var(--navy);
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    gap: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .hero-buttons { flex-direction: column; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#" onclick="showPage('home')" style="text-decoration:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" height="44" style="display:block;">
+      <defs>
+        <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#2196f3"/><stop offset="100%" stop-color="#00b0ff"/>
+        </linearGradient>
+        <filter id="ns"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#2196f3" flood-opacity="0.35"/></filter>
+      </defs>
+      <rect x="12" y="20" width="120" height="120" rx="26" ry="26" fill="#0a1628"/>
+      <rect x="12" y="20" width="120" height="120" rx="26" ry="26" fill="url(#ng)" opacity="0.15"/>
+      <circle cx="72" cy="80" r="14" fill="url(#ng)" filter="url(#ns)"/>
+      <circle cx="72" cy="80" r="8" fill="#0a1628"/>
+      <circle cx="72" cy="80" r="4" fill="url(#ng)"/>
+      <circle cx="38" cy="52" r="7" fill="url(#ng)" opacity="0.9"/>
+      <circle cx="106" cy="52" r="7" fill="url(#ng)" opacity="0.9"/>
+      <circle cx="38" cy="108" r="7" fill="url(#ng)" opacity="0.9"/>
+      <circle cx="106" cy="108" r="7" fill="url(#ng)" opacity="0.9"/>
+      <circle cx="72" cy="36" r="6" fill="#00b0ff" opacity="0.8"/>
+      <circle cx="72" cy="124" r="6" fill="#00b0ff" opacity="0.8"/>
+      <line x1="72" y1="66" x2="42" y2="56" stroke="url(#ng)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="72" y1="66" x2="102" y2="56" stroke="url(#ng)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="72" y1="94" x2="42" y2="104" stroke="url(#ng)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="72" y1="94" x2="102" y2="104" stroke="url(#ng)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="72" y1="66" x2="72" y2="42" stroke="#00b0ff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="72" y1="94" x2="72" y2="118" stroke="#00b0ff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <rect x="12" y="20" width="120" height="120" rx="26" ry="26" fill="none" stroke="url(#ng)" stroke-width="1.5" opacity="0.4"/>
+      <text x="152" y="78" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif" font-weight="800" font-size="54" letter-spacing="2" fill="#ffffff" text-anchor="start">UBUNTU</text>
+      <rect x="152" y="86" width="340" height="3" rx="2" fill="url(#ng)" opacity="0.25"/>
+      <text x="152" y="122" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif" font-weight="600" font-size="32" letter-spacing="8" fill="#1565c0" text-anchor="start"><tspan fill="#2196f3">IT</tspan> TECH</text>
+      <text x="154" y="145" font-family="'DM Sans',Arial,sans-serif" font-weight="400" font-size="11" letter-spacing="2.5" fill="#90a4ae" text-anchor="start">YOUR COMPLETE IT PARTNER</text>
+    </svg>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('home'); closeMenu()">Home</a></li>
+    <li><a href="#" onclick="showPage('about'); closeMenu()">About Us</a></li>
+    <li><a href="#" onclick="showPage('services'); closeMenu()">Services</a></li>
+    <li><a href="#" onclick="showPage('contact'); closeMenu()" class="nav-cta">Free Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══════════ HOME PAGE ═══════════ -->
+<div id="page-home" class="page active">
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">🚀 South Africa's Trusted IT Partner</div>
+        <h1>Technology<br>Solutions<br><em>That Work</em></h1>
+        <p>Ubuntu IT Tech delivers end-to-end IT services — from robust infrastructure to cutting-edge cybersecurity — helping businesses grow with confidence.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary" onclick="showPage('contact')">Get a Free Quote</a>
+          <a href="#" class="btn-outline" onclick="showPage('services')">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-icon">🌐</div>
+          <div class="hero-card-title">Networking</div>
+          <div class="hero-card-sub">Infrastructure & Setup</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🛡️</div>
+          <div class="hero-card-title">Firewall & Security</div>
+          <div class="hero-card-sub">Cybersecurity Protection</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">☁️</div>
+          <div class="hero-card-title">Cloud & Microsoft</div>
+          <div class="hero-card-sub">365 & Azure Solutions</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🔀</div>
+          <div class="hero-card-title">Failover Internet</div>
+          <div class="hero-card-sub">Always-On Connectivity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div>
+        <div class="stat-num">21+</div>
+        <div class="stat-label">IT Services Offered</div>
+      </div>
+      <div>
+        <div class="stat-num">99%</div>
+        <div class="stat-label">Customer Satisfaction</div>
+      </div>
+      <div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Support Available</div>
+      </div>
+    </div>
+  </div>
+
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title">Our Core <em>Services</em></h2>
+        <p class="section-sub">A full suite of professional IT solutions designed to keep your business running smoothly and securely.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🌐</span>
+          <div class="service-title">Networking & Infrastructure</div>
+          <div class="service-desc">Robust network design, installation, and management for seamless connectivity.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🛠️</span>
+          <div class="service-title">IT Support & Helpdesk</div>
+          <div class="service-desc">Fast, reliable technical support to keep your team productive every day.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔒</span>
+          <div class="service-title">Cybersecurity</div>
+          <div class="service-desc">Protect your business with proactive threat monitoring and firewalls.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">☁️</span>
+          <div class="service-title">Cloud & Microsoft Solutions</div>
+          <div class="service-desc">Microsoft 365 licensing, tenant setup, cloud hosting, and migration.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💡</span>
+          <div class="service-title">Software Development</div>
+          <div class="service-desc">Custom software tailored to your unique business requirements.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🖥️</span>
+          <div class="service-title">Web & Hosting</div>
+          <div class="service-desc">Modern website design plus reliable email and website hosting.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🗄️</span>
+          <div class="service-title">Backup & Recovery</div>
+          <div class="service-desc">Automated server and PC backups with rapid data recovery solutions.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔧</span>
+          <div class="service-title">Device Repairs & Recovery</div>
+          <div class="service-desc">Expert computer repairs and data recovery from any storage device.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📅</span>
+          <div class="service-title">Monthly IT Support Retainer</div>
+          <div class="service-desc">Predictable monthly IT support — your dedicated tech team on standby.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📷</span>
+          <div class="service-title">Security & Surveillance</div>
+          <div class="service-desc">CCTV, access control, and full camera and network cabling installation.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🖨️</span>
+          <div class="service-title">Printer Rental & Support</div>
+          <div class="service-desc">Flexible printer rental, setup, and ongoing maintenance for your business.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💾</span>
+          <div class="service-title">Data Backup & Recovery</div>
+          <div class="service-desc">Automated offsite and cloud backups with tested, rapid recovery.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📞</span>
+          <div class="service-title">VoIP Setup & Hosting</div>
+          <div class="service-desc">Professional VoIP phone systems setup with affordable monthly hosting and support.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔍</span>
+          <div class="service-title">IT Assessments</div>
+          <div class="service-desc">Free IT infrastructure assessments covering servers, network, security, backups, and power needs.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📋</span>
+          <div class="service-title">POPIA Compliance</div>
+          <div class="service-desc">Keep your business compliant with the Protection of Personal Information Act — audits and consulting.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔄</span>
+          <div class="service-title">Disaster Recovery Planning</div>
+          <div class="service-desc">Full business continuity and disaster recovery planning to keep your business running no matter what.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">⚡</span>
+          <div class="service-title">UPS & Power Solutions</div>
+          <div class="service-desc">UPS installation and power solutions to protect your business against load shedding and outages.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🌍</span>
+          <div class="service-title">Fibre & Internet Solutions</div>
+          <div class="service-desc">Business fibre and wireless internet solutions — sourcing, installation, and ongoing management.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🛡️</span>
+          <div class="service-title">Firewall Solutions</div>
+          <div class="service-desc">Enterprise-grade firewall setup, configuration, and management to protect your business network.</div>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔀</span>
+          <div class="service-title">Failover Internet Solutions</div>
+          <div class="service-desc">Automatic internet failover systems ensuring your business stays online even when your primary line goes down.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-visual">
+          <div class="section-tag" style="color: var(--accent);">Why Choose Us</div>
+          <h2 class="section-title" style="color: var(--white); font-size: 36px; margin-bottom: 30px;">Built on <em>Trust</em> &<br>Expertise</h2>
+          <ul class="why-list">
+            <li class="why-item">
+              <div class="why-dot">⚡</div>
+              <div>
+                <div class="why-item-title">Fast Response Time</div>
+                <div class="why-item-sub">We prioritise your issues and respond quickly to minimise downtime.</div>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-dot">🏆</div>
+              <div>
+                <div class="why-item-title">Certified Professionals</div>
+                <div class="why-item-sub">Our team holds industry certifications across all service areas.</div>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-dot">🤝</div>
+              <div>
+                <div class="why-item-title">Personalised Service</div>
+                <div class="why-item-sub">We tailor every solution to your specific business needs and budget.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-point-num">01</div>
+            <div>
+              <div class="why-point-title">Free Consultation</div>
+              <div class="why-point-sub">We start with a no-obligation consultation to understand your needs before recommending solutions.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">02</div>
+            <div>
+              <div class="why-point-title">Transparent Pricing</div>
+              <div class="why-point-sub">No hidden fees. You'll always know exactly what you're paying for and why.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">03</div>
+            <div>
+              <div class="why-point-title">Ongoing Support</div>
+              <div class="why-point-sub">We don't disappear after setup. Our team is always available to support you as your business grows.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">04</div>
+            <div>
+              <div class="why-point-title">Local & Reliable</div>
+              <div class="why-point-sub">Based locally and dedicated to supporting South African businesses with world-class IT solutions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h2>Ready to <em>Transform</em> Your Business?</h2>
+    <p>Get a free, no-obligation IT consultation and quote from our team of experts today.</p>
+    <a href="#" class="btn-primary" onclick="showPage('contact')">Request a Free Quote →</a>
+  </div>
+
+</div>
+
+<!-- ═══════════ ABOUT PAGE ═══════════ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <div class="section-tag">Who We Are</div>
+    <h1>About <em>Ubuntu IT Tech</em></h1>
+    <p>Technology with a human touch — driven by community and commitment.</p>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <div class="section-tag">Our Story</div>
+          <h2 class="section-title">People-First <em>IT</em></h2>
+          <p>At Ubuntu IT Tech, we believe that great technology should empower people — not overwhelm them. Founded on the African philosophy of <strong>"I am because we are"</strong>, we're committed to building lasting relationships with our clients through trust, transparency, and exceptional service.</p>
+          <p>We work with businesses of all sizes, from startups finding their feet to established companies scaling their operations. Our team of certified professionals brings deep expertise across networking, cybersecurity, cloud computing, software development, and more.</p>
+          <p>Whether you need day-to-day IT support or a complete digital transformation, <strong>Ubuntu IT Tech</strong> is your dedicated partner every step of the way.</p>
+          <br>
+          <a href="#" class="btn-primary" onclick="showPage('contact')">Get in Touch Today</a>
+        </div>
+        <div>
+          <div class="section-tag" style="margin-bottom: 20px;">Our Values</div>
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-icon">🤝</div>
+              <div class="value-title">Community</div>
+              <div class="value-desc">We uplift the businesses and people around us, growing together.</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">🔐</div>
+              <div class="value-title">Integrity</div>
+              <div class="value-desc">Transparent, honest advice — always in your best interest.</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">⚡</div>
+              <div class="value-title">Excellence</div>
+              <div class="value-desc">We hold ourselves to the highest standards in everything we do.</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">🌍</div>
+              <div class="value-title">Innovation</div>
+              <div class="value-desc">Embracing new technologies to deliver forward-thinking solutions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h2>Let's Build Something <em>Great</em> Together</h2>
+    <p>Talk to our team about how we can support your business with the right IT solutions.</p>
+    <a href="#" class="btn-primary" onclick="showPage('contact')">Request a Free Quote →</a>
+  </div>
+</div>
+
+<!-- ═══════════ SERVICES PAGE ═══════════ -->
+<div id="page-services" class="page">
+  <div class="services-page-hero">
+    <div class="section-tag">What We Offer</div>
+    <h1>Our <em>Services</em></h1>
+    <p>Comprehensive IT solutions to power every aspect of your business.</p>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="services-full-grid">
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🌐</div>
+          <div>
+            <div class="sfc-title">Networking & Infrastructure</div>
+            <div class="sfc-desc">We design, install, and manage enterprise-grade networks that keep your business connected and running at peak performance.</div>
+            <ul class="sfc-features">
+              <li>LAN/WAN setup and configuration</li>
+              <li>Wi-Fi planning and installation</li>
+              <li>Network monitoring and maintenance</li>
+              <li>VPN and remote access solutions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🛠️</div>
+          <div>
+            <div class="sfc-title">IT Support & Helpdesk</div>
+            <div class="sfc-desc">Our dedicated helpdesk team provides fast, friendly support to resolve technical issues before they impact your productivity.</div>
+            <ul class="sfc-features">
+              <li>Remote and on-site support</li>
+              <li>Hardware and software troubleshooting</li>
+              <li>User account management</li>
+              <li>Proactive system monitoring</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🔒</div>
+          <div>
+            <div class="sfc-title">Cybersecurity</div>
+            <div class="sfc-desc">Protect your business from evolving threats with our comprehensive security services — from firewalls to employee training.</div>
+            <ul class="sfc-features">
+              <li>Firewall setup and management</li>
+              <li>Security audits and vulnerability assessments</li>
+              <li>Endpoint protection</li>
+              <li>Security awareness training</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">☁️</div>
+          <div>
+            <div class="sfc-title">Cloud & Microsoft Solutions</div>
+            <div class="sfc-desc">We handle your Microsoft 365 licensing, tenant setup, and cloud migration — so your team has the right tools to work efficiently.</div>
+            <ul class="sfc-features">
+              <li>Microsoft 365 license procurement and setup</li>
+              <li>Tenant configuration and user management</li>
+              <li>Cloud migration and hosting</li>
+              <li>Teams, SharePoint, and OneDrive setup</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">💡</div>
+          <div>
+            <div class="sfc-title">Software Development</div>
+            <div class="sfc-desc">We build custom software and applications designed around your specific workflows, saving you time and boosting efficiency.</div>
+            <ul class="sfc-features">
+              <li>Custom business applications</li>
+              <li>Mobile app development</li>
+              <li>System integrations and APIs</li>
+              <li>Database design and management</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🖥️</div>
+          <div>
+            <div class="sfc-title">Web & Hosting</div>
+            <div class="sfc-desc">Professional, modern website design combined with reliable email and website hosting — everything you need for a strong online presence.</div>
+            <ul class="sfc-features">
+              <li>Responsive website design and development</li>
+              <li>Business email and website hosting</li>
+              <li>Domain management and SSL certificates</li>
+              <li>SEO optimisation and ongoing maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🗄️</div>
+          <div>
+            <div class="sfc-title">Backup & Recovery</div>
+            <div class="sfc-desc">Comprehensive automated backup for your servers and workstations, with rapid recovery to get your business back up quickly after any incident.</div>
+            <ul class="sfc-features">
+              <li>Automated scheduled server and PC backups</li>
+              <li>Offsite and cloud backup storage</li>
+              <li>Rapid data and system recovery</li>
+              <li>Backup health monitoring and reporting</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🔧</div>
+          <div>
+            <div class="sfc-title">Device Repairs & Recovery</div>
+            <div class="sfc-desc">Expert repair services for desktops and laptops, plus professional recovery of lost or corrupted data from any storage device.</div>
+            <ul class="sfc-features">
+              <li>Hardware diagnostics and repairs</li>
+              <li>Virus, malware removal and OS reinstall</li>
+              <li>Hard drive, SSD, and flash drive data recovery</li>
+              <li>RAM, SSD, and component upgrades</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">📅</div>
+          <div>
+            <div class="sfc-title">Monthly IT Support Retainer</div>
+            <div class="sfc-desc">A cost-effective monthly support package giving your business access to a dedicated IT team without the expense of in-house staff.</div>
+            <ul class="sfc-features">
+              <li>Dedicated monthly support hours</li>
+              <li>Priority response for incidents</li>
+              <li>Proactive system health checks</li>
+              <li>Monthly reporting and recommendations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">📷</div>
+          <div>
+            <div class="sfc-title">Security & Surveillance</div>
+            <div class="sfc-desc">Full security solutions — from HD CCTV camera installation and network cabling to access control systems and remote monitoring.</div>
+            <ul class="sfc-features">
+              <li>HD and IP CCTV camera installation</li>
+              <li>Structured network cabling</li>
+              <li>Access control systems</li>
+              <li>Remote monitoring and mobile access setup</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🖨️</div>
+          <div>
+            <div class="sfc-title">Printer Rental & Support</div>
+            <div class="sfc-desc">Flexible printer and multi-function device rental with full setup, consumables management, and ongoing technical support.</div>
+            <ul class="sfc-features">
+              <li>Short and long-term printer rental</li>
+              <li>Network printer setup and configuration</li>
+              <li>Toner and consumables management</li>
+              <li>Repairs and ongoing maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">💾</div>
+          <div>
+            <div class="sfc-title">Data Backup & Recovery</div>
+            <div class="sfc-desc">Never lose critical data again. We implement automated backup solutions and rapid recovery processes to protect your business continuity.</div>
+            <ul class="sfc-features">
+              <li>Automated daily backups</li>
+              <li>Offsite and cloud backup storage</li>
+              <li>Rapid data recovery</li>
+              <li>Backup testing and verification</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">📞</div>
+          <div>
+            <div class="sfc-title">VoIP Setup & Monthly Hosting</div>
+            <div class="sfc-desc">We set up professional VoIP phone systems for your business — giving you a real landline number that rings to any device, with affordable monthly hosting.</div>
+            <ul class="sfc-features">
+              <li>VoIP number setup (010, 011, 021 etc.)</li>
+              <li>Call forwarding to your cellphone</li>
+              <li>Monthly VoIP hosting and management</li>
+              <li>Voicemail, call routing and extensions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🔍</div>
+          <div>
+            <div class="sfc-title">IT Assessments</div>
+            <div class="sfc-desc">A comprehensive free IT infrastructure assessment covering your servers, firewall, network security, internet, backups, and power requirements — identifying gaps before they become problems.</div>
+            <ul class="sfc-features">
+              <li>Full infrastructure audit and report</li>
+              <li>Server and network health check</li>
+              <li>Security and backup assessment</li>
+              <li>Power and UPS evaluation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">📋</div>
+          <div>
+            <div class="sfc-title">POPIA Compliance</div>
+            <div class="sfc-desc">Every South African business must comply with the Protection of Personal Information Act. We help you assess your current data practices, identify risks, and implement the right controls.</div>
+            <ul class="sfc-features">
+              <li>POPIA gap analysis and audit</li>
+              <li>Data flow mapping and risk assessment</li>
+              <li>Policy and procedure documentation</li>
+              <li>Ongoing compliance monitoring</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🔄</div>
+          <div>
+            <div class="sfc-title">Disaster Recovery Planning</div>
+            <div class="sfc-desc">A proper disaster recovery plan ensures your business can survive and recover from any IT incident — from ransomware attacks to hardware failure or natural disasters.</div>
+            <ul class="sfc-features">
+              <li>Business continuity planning</li>
+              <li>Recovery time and point objectives</li>
+              <li>Cloud and offsite disaster recovery</li>
+              <li>Regular DR testing and updates</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">⚡</div>
+          <div>
+            <div class="sfc-title">UPS & Power Solutions</div>
+            <div class="sfc-desc">Protect your business from load shedding and power outages with the right UPS and power backup solutions — keeping your systems and data safe during interruptions.</div>
+            <ul class="sfc-features">
+              <li>UPS sizing, supply and installation</li>
+              <li>Server and network power protection</li>
+              <li>Surge protection and power conditioning</li>
+              <li>UPS maintenance and battery replacement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🌍</div>
+          <div>
+            <div class="sfc-title">Fibre & Internet Solutions</div>
+            <div class="sfc-desc">We help businesses source, install, and manage the right fibre or wireless internet solution — ensuring reliable, fast connectivity for your team and operations.</div>
+            <ul class="sfc-features">
+              <li>Business fibre and wireless internet</li>
+              <li>ISP sourcing and comparison</li>
+              <li>Router and firewall configuration</li>
+              <li>Failover and redundancy solutions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🛡️</div>
+          <div>
+            <div class="sfc-title">Firewall Solutions</div>
+            <div class="sfc-desc">We supply, install, and manage enterprise-grade firewalls to protect your business network from threats, control traffic, and enforce security policies.</div>
+            <ul class="sfc-features">
+              <li>Firewall supply and installation</li>
+              <li>Rules, policies and traffic management</li>
+              <li>VPN and remote access configuration</li>
+              <li>Ongoing monitoring and management</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-full-card">
+          <div class="sfc-icon-wrap">🔀</div>
+          <div>
+            <div class="sfc-title">Failover Internet Solutions</div>
+            <div class="sfc-desc">Never lose internet connectivity again. Our failover solutions automatically switch to a backup connection the moment your primary line drops — keeping your business online 24/7.</div>
+            <ul class="sfc-features">
+              <li>Dual-line failover setup and configuration</li>
+              <li>LTE and wireless backup solutions</li>
+              <li>Automatic switchover with zero downtime</li>
+              <li>Load balancing across multiple connections</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h2>Not Sure What You <em>Need?</em></h2>
+    <p>Let our team assess your current setup and recommend the best solutions — for free.</p>
+    <a href="#" class="btn-primary" onclick="showPage('contact')">Get a Free Consultation →</a>
+  </div>
+</div>
+
+<!-- ═══════════ CONTACT PAGE ═══════════ -->
+<div id="page-contact" class="page">
+  <div class="contact-hero">
+    <div class="section-tag">Get in Touch</div>
+    <h1>Request a <em>Free Quote</em></h1>
+    <p>Tell us about your needs and we'll get back to you within 24 hours.</p>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-tag">Contact Details</div>
+          <h2 class="section-title" style="font-size: 32px;">Let's <em>Talk</em></h2>
+          <p style="font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:24px;">We'd love to hear about your business and how we can help. Reach out through any of the channels below, or fill in the quote form.</p>
+
+          <div class="contact-card">
+            <div class="cc-icon">📧</div>
+            <div>
+              <div class="cc-label">Email</div>
+              <div class="cc-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4bdbab2bb94a1b6a1baa0a1bda0fab7bbfaaeb5">[email&#160;protected]</a></div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">📞</div>
+            <div>
+              <div class="cc-label">Phone</div>
+              <div class="cc-value">+27 68 613 7878</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">💬</div>
+            <div>
+              <div class="cc-label">WhatsApp</div>
+              <div class="cc-value">+27 68 613 7878</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">🕐</div>
+            <div>
+              <div class="cc-label">Business Hours</div>
+              <div class="cc-value">Mon–Fri: 8am – 5pm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-form">
+          <div id="formContent">
+            <div class="form-title">Free Quote Request</div>
+            <div class="form-sub">Fill in your details and we'll prepare a tailored quote for you.</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" placeholder="John">
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" placeholder="Smith">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" placeholder="john@company.co.za">
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+27 00 000 0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Company Name</label>
+              <input type="text" placeholder="Your Company">
+            </div>
+            <div class="form-group">
+              <label>Service Interested In *</label>
+              <select>
+                <option value="">Select a service...</option>
+                <option>Networking & Infrastructure</option>
+                <option>IT Support & Helpdesk</option>
+                <option>Cybersecurity</option>
+                <option>Cloud & Microsoft Solutions</option>
+                <option>Software Development</option>
+                <option>Web & Hosting</option>
+                <option>Backup & Recovery</option>
+                <option>Device Repairs & Recovery</option>
+                <option>Monthly IT Support Retainer</option>
+                <option>Security & Surveillance</option>
+                <option>Printer Rental & Support</option>
+                <option>Data Backup & Recovery</option>
+                <option>VoIP Setup & Monthly Hosting</option>
+                <option>IT Assessments</option>
+                <option>POPIA Compliance</option>
+                <option>Disaster Recovery Planning</option>
+                <option>UPS & Power Solutions</option>
+                <option>Fibre & Internet Solutions</option>
+                <option>Firewall Solutions</option>
+                <option>Failover Internet Solutions</option>
+                <option>Multiple Services / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tell Us About Your Needs</label>
+              <textarea placeholder="Briefly describe your business and what you're looking for..."></textarea>
+            </div>
+            <button class="form-submit" onclick="submitForm()">Send Quote Request →</button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="check">✅</div>
+            <h3>Quote Request Sent!</h3>
+            <p>Thank you! We've received your request and will be in touch within 24 hours with a tailored quote.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" height="60" style="display:block;margin-bottom:10px;">
+        <defs>
+          <linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2196f3"/><stop offset="100%" stop-color="#00b0ff"/>
+          </linearGradient>
+          <filter id="fs"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#2196f3" flood-opacity="0.35"/></filter>
+        </defs>
+        <rect x="12" y="20" width="120" height="120" rx="26" ry="26" fill="#0f2040"/>
+        <rect x="12" y="20" width="120" height="120" rx="26" ry="26" fill="url(#fg)" opacity="0.15"/>
+        <circle cx="72" cy="80" r="14" fill="url(#fg)" filter="url(#fs)"/>
+        <circle cx="72" cy="80" r="8" fill="#0f2040"/>
+        <circle cx="72" cy="80" r="4" fill="url(#fg)"/>
+        <circle cx="38" cy="52" r="7" fill="url(#fg)" opacity="0.9"/>
+        <circle cx="106" cy="52" r="7" fill="url(#fg)" opacity="0.9"/>
+        <circle cx="38" cy="108" r="7" fill="url(#fg)" opacity="0.9"/>
+        <circle cx="106" cy="108" r="7" fill="url(#fg)" opacity="0.9"/>
+        <circle cx="72" cy="36" r="6" fill="#00b0ff" opacity="0.8"/>
+        <circle cx="72" cy="124" r="6" fill="#00b0ff" opacity="0.8"/>
+        <line x1="72" y1="66" x2="42" y2="56" stroke="url(#fg)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="72" y1="66" x2="102" y2="56" stroke="url(#fg)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="72" y1="94" x2="42" y2="104" stroke="url(#fg)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="72" y1="94" x2="102" y2="104" stroke="url(#fg)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="72" y1="66" x2="72" y2="42" stroke="#00b0ff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <line x1="72" y1="94" x2="72" y2="118" stroke="#00b0ff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <rect x="12" y="20" width="120" height="120" rx="26" ry="26" fill="none" stroke="url(#fg)" stroke-width="1.5" opacity="0.4"/>
+        <text x="152" y="78" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif" font-weight="800" font-size="54" letter-spacing="2" fill="#ffffff" text-anchor="start">UBUNTU</text>
+        <rect x="152" y="86" width="340" height="3" rx="2" fill="url(#fg)" opacity="0.25"/>
+        <text x="152" y="122" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif" font-weight="600" font-size="32" letter-spacing="8" fill="#1565c0" text-anchor="start"><tspan fill="#2196f3">IT</tspan> TECH</text>
+        <text x="154" y="145" font-family="'DM Sans',Arial,sans-serif" font-weight="400" font-size="11" letter-spacing="2.5" fill="#90a4ae" text-anchor="start">YOUR COMPLETE IT PARTNER</text>
+      </svg>
+      <div class="footer-tagline">Your complete IT partner — delivering reliable, professional technology solutions for businesses across South Africa.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+        <li><a href="#" onclick="showPage('services')">Services</a></li>
+        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('services')">Networking & Infrastructure</a></li>
+        <li><a href="#" onclick="showPage('services')">Cybersecurity & Firewall</a></li>
+        <li><a href="#" onclick="showPage('services')">Cloud & Microsoft Solutions</a></li>
+        <li><a href="#" onclick="showPage('services')">IT Support & Helpdesk</a></li>
+        <li><a href="#" onclick="showPage('services')">Web & Hosting</a></li>
+        <li><a href="#" onclick="showPage('services')">VoIP Setup & Hosting</a></li>
+        <li><a href="#" onclick="showPage('services')">Security & Surveillance</a></li>
+        <li><a href="#" onclick="showPage('services')">View All Services →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="/cdn-cgi/l/email-protection#b8d1d6ded7f8cddacdd6cccdd1cc96dbd796c2d9"><span class="__cf_email__" data-cfemail="5a33343c351a2f382f342e2f332e74393574203b">[email&#160;protected]</span></a></li>
+        <li><a href="tel:+27686137878">+27 68 613 7878</a></li>
+        <li><a href="https://wa.me/27686137878">WhatsApp Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Ubuntu IT Tech. All rights reserved.</div>
+    <div style="color: var(--accent);">Built with ❤️ for South Africa</div>
+  </div>
+</footer
